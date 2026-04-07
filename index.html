@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brigada Data Encode</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        background: linear-gradient(135deg, #e0e7ff 0%, #f5f5f5 100%);
+        min-height: 100vh;
+    }
+    .center-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    h1 {
+        color: #2d3a4b;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+    form.form-grid {
+        background: #fff;
+        padding: 36px 40px 28px 40px;
+        border-radius: 14px;
+        box-shadow: 0 6px 32px rgba(44,62,80,0.10), 0 1.5px 6px rgba(44,62,80,0.08);
+        display: grid;
+        grid-template-columns: 200px 350px;
+        gap: 18px 28px;
+        min-width: 420px;
+        max-width: 100%;
+    }
+    .form-grid label {
+        font-size: 1.08rem;
+        color: #34495e;
+        text-align: right;
+        align-self: center;
+        font-weight: 500;
+    }
+    .form-grid input[type="text"],
+    .form-grid input[type="date"],
+    .form-grid select {
+        font-size: 1.08rem;
+        padding: 10px 12px;
+        border: 1px solid #bfc9d1;
+        border-radius: 5px;
+        width: 100%;
+        transition: border-color 0.2s;
+        background: #fafdff;
+        box-sizing: border-box;
+    }
+    .form-grid input[type="text"]:focus,
+    .form-grid input[type="date"]:focus,
+    .form-grid select:focus {
+        border-color: #007bff;
+        outline: none;
+        background: #f0f8ff;
+    }
+    button {
+        padding: 12px 32px;
+        background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.08rem;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+        justify-self: end;
+        margin-top: 10px;
+    }
+    button:hover {
+        background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
+        box-shadow: 0 4px 16px rgba(0,123,255,0.13);
+    }
+    #output {
+        grid-column: 2;
+        font-size: 1rem;
+        color: #007bff;
+        margin-top: 8px;
+        min-height: 24px;
+        align-self: center;
+    }
+    @media (max-width: 600px) {
+        form.form-grid {
+            grid-template-columns: 1fr;
+            min-width: 0;
+            padding: 18px 10px;
+        }
+        .form-grid label {
+            text-align: left;
+            margin-bottom: 2px;
+        }
+        button {
+            width: 100%;
+            justify-self: stretch;
+        }
+        #output {
+            grid-column: 1;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="center-container">
+    <h1>Brigada Data Encode</h1>
+    <form class="form-grid" autocomplete="off">
+        <label for="myDatePicker">Date of Call</label>
+        <input type="date" id="myDatePicker">
+
+        <label for="pharmacy">Pharmacy Name</label>
+        <select id="pharmacy">
+            <option>Loading...</option>
+        </select>
+
+        <label for="Area">Area Name</label>
+        <select id="Area">
+            <option>Loading...</option>
+        </select>
+
+        <label for="myTextbox1">1. How satisfied are you with the quality of the products delivered?</label>
+        <select id="myTextbox1">
+            <option value="">Select...</option>
+            <option value="5-Very Satisfied">Very Satisfied</option>
+            <option value="4-Satisfied">Satisfied</option>
+            <option value="3-Neutral">Neutral</option>
+            <option value="2-Dissatisfied">Dissatisfied</option>
+            <option value="1-Very Dissatisfied">Very Dissatisfied</option>
+        </select>
+
+        <label for="myTextbox2">2. How would you rate the timeliness of product delivery?</label>
+        <select id="myTextbox2">
+            <option value="">Select...</option>
+            <option value="5-Excellent (Always on time)">Excellent (Always on time)</option>
+            <option value="4-Good (Mostly on time)">Good (Mostly on time)</option>
+            <option value="3-Fair (Sometimes delayed)">Fair (Sometimes delayed)</option>
+            <option value="2-Poor (Often delayed)">Poor (Often delayed)</option>
+            <option value="1-Very Poor (Always delayed)">Very Poor (Always delayed)</option>
+        </select>
+
+        <label for="myTextbox3">3. Did the trade representative fully serve your orders?</label>
+        <select id="myTextbox3">
+            <option value="">Select...</option>
+            <option value="5-Always complete">Always complete</option>
+            <option value="4-Mostly complete">Mostly complete</option>
+            <option value="3-Sometimes complete">Sometimes complete</option>
+            <option value="2-Rarely complete">Rarely complete</option>
+            <option value="1-Never complete">Never complete</option>
+        </select>
+
+        <label for="myTextbox4">4. How satisfied are you with the professionalism of our Trade Representative?</label>
+        <select id="myTextbox4">
+            <option value="">Select...</option>
+            <option value="5-Very Professional">Very Professional</option>
+            <option value="4-Professional">Professional</option>
+            <option value="3-Neutral">Neutral</option>
+            <option value="2-Unprofessional">Unprofessional</option>
+            <option value="1-Very Unprofessional">Very Unprofessional</option>
+        </select>
+
+        <label for="myTextbox5">5. How quickly are your questions or concerns addressed, if you have any?</label>
+        <select id="myTextbox5">
+            <option value="">Select...</option>
+            <option value="5-Very Quickly (same day)">Very Quickly (same day)</option>
+            <option value="4-Quickly (within 1–2 days)">Quickly (within 1–2 days)</option>
+            <option value="3-Average (within a few days)">Average (within a few days)</option>
+            <option value="2-Slowly (a week or more)">Slowly (a week or more)</option>
+            <option value="1-Very Slowly (rarely addressed)">Very Slowly (rarely addressed)</option>
+        </select>
+
+        <div></div>
+        <button id="myButton" type="button">Save</button>
+        <label id="output"></label>
+    </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const urlpharmacy = "https://script.google.com/macros/s/AKfycbyai5_QCC0MOQ_ewUC1HmQ2hPzAP9D3cX0Xqv9yvFCkGZlRXaRLlLWavJmKHo7UUQfJ/exec?type=pharmacy";
+    const urlarea = "https://script.google.com/macros/s/AKfycbyai5_QCC0MOQ_ewUC1HmQ2hPzAP9D3cX0Xqv9yvFCkGZlRXaRLlLWavJmKHo7UUQfJ/exec?type=area";
+
+    const populateDropdown = (url, elementId, errorMessage) => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                const dropdown = document.getElementById(elementId);
+                dropdown.innerHTML = "";
+                data.forEach(item => {
+                    const option = document.createElement("option");
+                    option.value = item;
+                    option.text = item;
+                    dropdown.appendChild(option);
+                });
+            })
+            .catch(() => {
+                document.getElementById(elementId).innerHTML = `<option>${errorMessage}</option>`;
+            });
+    };
+
+    populateDropdown(urlpharmacy, "pharmacy", "Error loading pharmacies");
+    populateDropdown(urlarea, "Area", "Error loading areas");
+});
+
+document.getElementById("myButton").addEventListener("click", saveData);
+
+function saveData() {
+    const data = new URLSearchParams({
+        date: document.getElementById("myDatePicker").value,
+        pharmacy: document.getElementById("pharmacy").value,
+        area: document.getElementById("Area").value,
+        q1: document.getElementById("myTextbox1").value.split("-")[0],
+        q2: document.getElementById("myTextbox2").value.split("-")[0],
+        q3: document.getElementById("myTextbox3").value.split("-")[0],
+        q4: document.getElementById("myTextbox4").value.split("-")[0],
+        q5: document.getElementById("myTextbox5").value.split("-")[0]
+    });
+
+    fetch("https://script.google.com/macros/s/AKfycbwDJaSuJGQ8lx_a6acVLlsJBC4oI2xRcVsvvkoKKejkEIKhplyXSZ2RxZJf83KThmp6/exec", {
+        method: "POST",
+        body: data
+    })
+    .then(response => {
+        if(response.ok){
+            document.getElementById("output").innerText = "Data uploaded successfully!";
+        } else {
+            document.getElementById("output").innerText = "Upload failed. Status: " + response.status;
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        document.getElementById("output").innerText = "Error: " + error;
+    });
+}
+</script>
+</body>
+</html>
